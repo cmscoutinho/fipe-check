@@ -1,14 +1,16 @@
 package br.com.coutsoft.fipe_check.service;
 
+import java.util.Arrays;
+
 public class URLBuilder {
     private final String BASE_URL_API = "https://parallelum.com.br/fipe/api/v1/";
 
-    public String getFullURL(String veiculo, String marca, String modelo, String ano) {
+    public String getFullURL(String ... args) {
         String fullURL = BASE_URL_API;
-        if (veiculo != null) { fullURL += veiculo + "/"; }
-        if (marca != null) { fullURL += "marcas/" + marca; }
-        if (modelo != null) { fullURL += "modelos/" + modelo; }
-        if (ano != null) { fullURL += "anos/" + ano; }
+        if (args.length == 1){ fullURL += args[0] + "/marcas"; }
+        if (args.length == 2) { fullURL += args[1] + "/"; }
+        if (args.length == 3) { fullURL += "modelos/" + args[2] + "/"; }
+        if (args.length == 4) { fullURL += "anos/" + args[3] + "/"; }
 
         return fullURL;
     }
