@@ -5,10 +5,11 @@ public class URLBuilder {
 
     public String getFullURL(String ... args) {
         String fullURL = BASE_URL_API;
-        if (args.length >= 1) { fullURL += args[0] + "/marcas/"; }
-        if (args.length >= 2) { fullURL += args[1] + "/modelos/"; }
-        if (args.length >= 3) { fullURL += args[2] + "/anos/"; }
-        if (args.length >= 4) { fullURL += args[3] + "/"; }
+        String[] suffixes = {"/marcas/", "/modelos/", "/anos/", "/"};
+
+        for (int i = 0; i < args.length; i++) {
+            fullURL += args[i] + suffixes[i];
+        }
 
         return fullURL;
     }
