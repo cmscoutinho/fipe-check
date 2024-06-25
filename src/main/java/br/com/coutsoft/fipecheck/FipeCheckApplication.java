@@ -15,7 +15,6 @@ public class FipeCheckApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception{
-		Main main = new Main();
-		main.main();
+		new Main().main();
 	}
 }

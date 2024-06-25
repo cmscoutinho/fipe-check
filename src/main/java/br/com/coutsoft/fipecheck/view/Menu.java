@@ -1,5 +1,6 @@
 package br.com.coutsoft.fipecheck.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
@@ -18,8 +19,12 @@ public class Menu {
             System.out.println("3-Trucks");
             System.out.print("-> ");
 
-            option = scanner.nextInt();
-            scanner.nextLine();
+            try {
+                option = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException | IllegalArgumentException e) {
+                option = -1;
+            }
 
             switch (option) {
                 case 1 -> optionStr = "carros";
