@@ -22,6 +22,7 @@ public class APIConsumer {
             System.out.println(e.getMessage());
         }
 
-        return (response.statusCode() == 200) ? response.body().toString() : "Invalid request!";
+        return (response.statusCode() == 200) ?
+                response.body().toString() : "Invalid request!";
     }
 }
