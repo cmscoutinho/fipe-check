@@ -1,6 +1,6 @@
-package br.com.coutsoft.fipe_check;
+package br.com.coutsoft.fipecheck;
 
-import br.com.coutsoft.fipe_check.main.Main;
+import br.com.coutsoft.fipecheck.main.Main;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,5 +16,6 @@ public class FipeCheckApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception{
 		Main main = new Main();
+		main.main();
 	}
 }

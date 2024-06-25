@@ -1,4 +1,4 @@
-package br.com.coutsoft.fipe_check.service;
+package br.com.coutsoft.fipecheck.service;
 
 import java.io.IOException;
 import java.net.URI;
@@ -21,7 +21,9 @@ public class APIConsumer {
         } catch (URISyntaxException | InterruptedException | IOException e) {
             System.out.println(e.getMessage());
         }
-
-        return response.body().toString();
+        if (response.statusCode() == 200)
+            return response.body().toString();
+        else
+            return "Request error!";
     }
 }

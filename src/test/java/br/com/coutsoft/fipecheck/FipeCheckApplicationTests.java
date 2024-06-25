@@ -1,4 +1,4 @@
-package br.com.coutsoft.fipe_check;
+package br.com.coutsoft.fipecheck;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

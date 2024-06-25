@@ -1,4 +1,4 @@
-package br.com.coutsoft.fipe_check.view;
+package br.com.coutsoft.fipecheck.view;
 
 import java.util.Scanner;
 
@@ -6,7 +6,7 @@ public class Menu {
 
     Scanner scanner = new Scanner(System.in);
 
-    public String menu() {
+    public String vehicleMenu() {
         int option;
         String optionStr = "";
 
@@ -22,20 +22,18 @@ public class Menu {
             scanner.nextLine();
 
             switch (option) {
-                case 1:
-                    optionStr = "carros";
-                    break;
-                case 2:
-                    optionStr = "motos";
-                    break;
-                case 3:
-                    optionStr = "caminhoes";
-                    break;
-                default:
-                    System.out.println("Opção inválida!\n");;
+                case 1 -> optionStr = "carros";
+                case 2 -> optionStr = "motos";
+                case 3 -> optionStr = "caminhoes";
+                default -> System.out.println("Opção inválida!\n");
             }
         } while (option < 0 || option > 3);
 
         return optionStr;
+    }
+
+    public String modelMenu() {
+        System.out.print("Choose a model: ");
+        return scanner.nextLine();
     }
 }
