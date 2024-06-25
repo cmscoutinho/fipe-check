@@ -12,10 +12,10 @@ public class APIConsumer {
     HttpRequest request;
     HttpResponse response;
 
-    public String consume(String baseUrl) {
+    public String consume(String requestUrl) {
         try {
             request = HttpRequest.newBuilder()
-                    .uri(new URI(baseUrl))
+                    .uri(new URI(requestUrl))
                     .build();
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
         } catch (URISyntaxException | InterruptedException | IOException e) {
