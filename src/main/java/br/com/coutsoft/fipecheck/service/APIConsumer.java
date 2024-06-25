@@ -21,9 +21,7 @@ public class APIConsumer {
         } catch (URISyntaxException | InterruptedException | IOException e) {
             System.out.println(e.getMessage());
         }
-        if (response.statusCode() == 200)
-            return response.body().toString();
-        else
-            return "Request error!";
+
+        return (response.statusCode() == 200) ? response.body().toString() : "Invalid request!";
     }
 }
