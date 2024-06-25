@@ -37,8 +37,39 @@ public class Menu {
         return optionStr;
     }
 
+    public String brandMenu() {
+        String brand;
+        try {
+            System.out.print("Choose a brand: ");
+            brand = scanner.nextLine();
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("Invalid brand!");
+            brand = "";
+        }
+        return brand;
+    }
+
     public String modelMenu() {
-        System.out.print("Choose a model: ");
-        return scanner.nextLine();
+        String model;
+        try {
+            System.out.print("Choose a model: ");
+            model = scanner.nextLine();
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("Invalid model!");
+            model = "";
+        }
+        return model;
+    }
+
+    public String yearMenu() {
+        String year;
+        try {
+            System.out.print("Choose a year: ");
+            year = scanner.nextLine();
+        } catch (InputMismatchException | IllegalArgumentException e) {
+            System.out.println("Invalid year!");
+            year = "";
+        }
+        return year;
     }
 }
