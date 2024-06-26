@@ -1,6 +1,5 @@
 package br.com.coutsoft.fipecheck.service;
 
-import br.com.coutsoft.fipecheck.model.CarData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
