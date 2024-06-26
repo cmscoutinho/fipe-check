@@ -11,6 +11,7 @@ public class Main {
 
     public void connect(String... args) {
         String fullURL = builder.getFullURL(args);
+
         System.out.println(consumer.consume(fullURL));
     }
 
