@@ -27,8 +27,6 @@ public class Main {
         String vehicleJson = connect(vehicle);
         List<VehicleData> vehicleData = Arrays.asList(new DataConverter().getData(vehicleJson, VehicleData[].class));
         vehicleData.forEach(System.out::println);
-        System.exit(0);
-
 
         String brand = new Menu().brandMenu();
         System.out.println(connect(vehicle, brand));
