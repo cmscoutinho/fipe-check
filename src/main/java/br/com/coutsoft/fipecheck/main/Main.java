@@ -1,10 +1,14 @@
 package br.com.coutsoft.fipecheck.main;
 
 import br.com.coutsoft.fipecheck.model.CarData;
+import br.com.coutsoft.fipecheck.model.VehicleData;
 import br.com.coutsoft.fipecheck.service.APIConsumer;
 import br.com.coutsoft.fipecheck.service.DataConverter;
 import br.com.coutsoft.fipecheck.service.URLBuilder;
 import br.com.coutsoft.fipecheck.view.Menu;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class Main {
@@ -20,7 +24,11 @@ public class Main {
     public void main() {
 
         String vehicle = new Menu().vehicleMenu();
-        System.out.println(connect(vehicle));
+        String vehicleJson = connect(vehicle);
+        List<VehicleData> vehicleData = Arrays.asList(new DataConverter().getData(vehicleJson, VehicleData[].class));
+        vehicleData.forEach(System.out::println);
+        System.exit(0);
+
 
         String brand = new Menu().brandMenu();
         System.out.println(connect(vehicle, brand));
@@ -29,9 +37,9 @@ public class Main {
         System.out.println(connect(vehicle, brand, model));
 
         String year = new Menu().yearMenu();
-        String json = connect(vehicle, brand, model, year);
+        String finalJson = connect(vehicle, brand, model, year);
 
-        CarData carData = new DataConverter().getData(json, CarData.class);
+        CarData carData = new DataConverter().getData(finalJson, CarData.class);
         System.out.println(carData);
 
     }

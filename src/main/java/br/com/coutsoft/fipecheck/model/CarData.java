@@ -1,6 +1,5 @@
 package br.com.coutsoft.fipecheck.model;
 
-
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
