@@ -1,5 +1,6 @@
 package br.com.coutsoft.fipecheck.main;
 
+import br.com.coutsoft.fipecheck.model.BrandData;
 import br.com.coutsoft.fipecheck.model.CarData;
 import br.com.coutsoft.fipecheck.model.VehicleData;
 import br.com.coutsoft.fipecheck.service.APIConsumer;
@@ -29,7 +30,9 @@ public class Main {
         vehicleData.forEach(System.out::println);
 
         String brand = new Menu().brandMenu();
-        System.out.println(connect(vehicle, brand));
+        String brandJson = connect(brand);
+        List<BrandData> brandData = Arrays.asList(new DataConverter().getData(brandJson, BrandData.class));
+        vehicleData.forEach(System.out::println);
 
         String model = new Menu().modelMenu();
         System.out.println(connect(vehicle, brand, model));
