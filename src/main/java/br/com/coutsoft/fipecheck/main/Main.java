@@ -30,9 +30,10 @@ public class Main {
         vehicleData.forEach(System.out::println);
 
         String brand = new Menu().brandMenu();
-        String brandJson = connect(brand);
-        List<BrandData> brandData = Arrays.asList(new DataConverter().getData(brandJson, BrandData.class));
-        vehicleData.forEach(System.out::println);
+        String brandJson = connect(vehicle, brand);
+        System.out.println(brandJson);
+//        List<BrandData> brandData = Arrays.asList(new DataConverter().getData(brandJson, BrandData.class));
+//        vehicleData.forEach(System.out::println);
 
         String model = new Menu().modelMenu();
         System.out.println(connect(vehicle, brand, model));
