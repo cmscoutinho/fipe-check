@@ -3,6 +3,7 @@ package br.com.coutsoft.fipecheck.main;
 import br.com.coutsoft.fipecheck.model.ModelData;
 import br.com.coutsoft.fipecheck.model.CarData;
 import br.com.coutsoft.fipecheck.model.BrandData;
+import br.com.coutsoft.fipecheck.model.YearData;
 import br.com.coutsoft.fipecheck.service.APIConsumer;
 import br.com.coutsoft.fipecheck.service.DataConverter;
 import br.com.coutsoft.fipecheck.service.URLBuilder;
@@ -30,14 +31,14 @@ public class Main {
         brandData.forEach(System.out::println);
 
         String brand = new Menu().brandMenu();
-        String brandJson = connect(vehicle, brand);
-        ModelData modelData = new DataConverter().getData(brandJson, ModelData.class);
+        String modelJson = connect(vehicle, brand);
+        ModelData modelData = new DataConverter().getData(modelJson, ModelData.class);
         System.out.println(modelData);
 
         String model = new Menu().modelMenu();
-        String modelJson = connect(vehicle, brand, model);
-//        ModelData modelData = new DataConverter().getData(modelJson, modelData);
-        System.out.println(modelJson);
+        String yearJson = connect(vehicle, brand, model);
+        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
+        yearData.forEach(System.out::println);
 
         String year = new Menu().yearMenu();
         String finalJson = connect(vehicle, brand, model, year);
