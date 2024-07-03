@@ -14,12 +14,11 @@ import java.util.List;
 
 
 public class Main {
-    APIConsumer consumer = new APIConsumer();
 
     public String connect(String... args) {
         String fullURL = URLBuilder.getFullURL(args);
 
-        return consumer.consume(fullURL);
+        return APIConsumer.consume(fullURL);
     }
 
     public void main() {

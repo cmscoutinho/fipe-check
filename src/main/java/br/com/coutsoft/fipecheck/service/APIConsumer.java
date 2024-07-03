@@ -8,11 +8,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class APIConsumer {
-    HttpClient client = HttpClient.newHttpClient();
-    HttpRequest request;
-    HttpResponse response;
+    private static HttpClient client = HttpClient.newHttpClient();
+    private static HttpRequest request;
+    private static HttpResponse response;
 
-    public String consume(String requestUrl) {
+    public static String consume(String requestUrl) {
         try {
             request = HttpRequest.newBuilder()
                     .uri(new URI(requestUrl))
