@@ -15,10 +15,9 @@ import java.util.List;
 
 public class Main {
     APIConsumer consumer = new APIConsumer();
-    URLBuilder builder = new URLBuilder();
 
     public String connect(String... args) {
-        String fullURL = builder.getFullURL(args);
+        String fullURL = URLBuilder.getFullURL(args);
 
         return consumer.consume(fullURL);
     }
