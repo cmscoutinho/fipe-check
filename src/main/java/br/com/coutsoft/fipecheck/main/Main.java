@@ -36,6 +36,8 @@ public class Main {
         System.out.println(modelData);
 
         String model = menu.modelMenu();
+        // create logic for filtering list based on the query string
+        // create a new filtered menu
         String yearJson = connect(vehicle, brand, model);
         List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
         yearData.forEach(System.out::println);
