@@ -49,10 +49,19 @@ public class Menu {
         return brand;
     }
 
-    public String modelMenu() {
+    public String modelMenu(int option) {
         String model;
         try {
-            System.out.print("Choose a model: ");
+            switch (option) {
+                case 1:
+                    System.out.print("Type in a model's name: ");
+                    break;
+                case 2:
+                    System.out.print("Choose a model code: ");
+                    break;
+                default:
+                    System.out.println("Invalid option!");
+            }
             model = scanner.nextLine();
         } catch (InputMismatchException | IllegalArgumentException e) {
             System.out.println("Invalid model!");

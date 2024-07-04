@@ -10,6 +10,7 @@ import br.com.coutsoft.fipecheck.service.ModelFilter;
 import br.com.coutsoft.fipecheck.service.URLBuilder;
 import br.com.coutsoft.fipecheck.view.Menu;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,14 +37,21 @@ public class Main {
         ModelData modelData = new DataConverter().getData(modelJson, ModelData.class);
         System.out.println(modelData);
 
-        List<ModelData.Model> models = ModelFilter.queryFilter(menu.modelMenu(), modelData);
+        String modelQuery = menu.modelMenu(1);
+        List<ModelData.Model> models = ModelFilter.queryFilter(modelQuery, modelData);
         models.forEach(System.out::println);
-        // create logic for filtering list based on the query string
-        // create a new filtered menu
+        String modelCode = menu.modelMenu(2);
 
-//        String yearJson = connect(vehicle, brand, model);
-//        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
-//        yearData.forEach(System.out::println);
+        String yearJson = connect(vehicle, brand, modelCode);
+        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
+        List<CarData> carsData = new ArrayList<>();
+        for (YearData yearDataIt: yearData) {
+            String code = yearDataIt.code();
+            String carJson = connect(vehicle, brand, modelCode);
+            CarData carData = new DataConverter().getData(carJson, CarData.class);
+            carsData.add(carData);
+        }
+        carsData.forEach(System.out::println);
 //
 //        String year = menu.yearMenu();
 //        String finalJson = connect(vehicle, brand, model, year);
