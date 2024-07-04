@@ -46,18 +46,13 @@ public class Main {
         List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
         List<CarData> carsData = new ArrayList<>();
         for (YearData yearDataIt: yearData) {
-            String code = yearDataIt.code();
-            String carJson = connect(vehicle, brand, modelCode);
+            String yearCode = yearDataIt.code();
+            String carJson = connect(vehicle, brand, modelCode, yearCode);
             CarData carData = new DataConverter().getData(carJson, CarData.class);
             carsData.add(carData);
         }
+
         carsData.forEach(System.out::println);
-//
-//        String year = menu.yearMenu();
-//        String finalJson = connect(vehicle, brand, model, year);
-//
-//        CarData carData = new DataConverter().getData(finalJson, CarData.class);
-//        System.out.println(carData);
 
     }
 }
