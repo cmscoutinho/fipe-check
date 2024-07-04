@@ -3,6 +3,7 @@ package br.com.coutsoft.fipecheck.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -18,7 +19,7 @@ public record ModelData(@JsonAlias("modelos") List<Model> models) {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private record Model(@JsonAlias("codigo") String code,
+    public record Model(@JsonAlias("codigo") String code,
                          @JsonAlias("nome") String name) {
         @Override
         public String toString() {

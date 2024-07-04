@@ -6,6 +6,7 @@ import br.com.coutsoft.fipecheck.model.BrandData;
 import br.com.coutsoft.fipecheck.model.YearData;
 import br.com.coutsoft.fipecheck.service.APIConsumer;
 import br.com.coutsoft.fipecheck.service.DataConverter;
+import br.com.coutsoft.fipecheck.service.ModelFilter;
 import br.com.coutsoft.fipecheck.service.URLBuilder;
 import br.com.coutsoft.fipecheck.view.Menu;
 
@@ -35,18 +36,20 @@ public class Main {
         ModelData modelData = new DataConverter().getData(modelJson, ModelData.class);
         System.out.println(modelData);
 
-        String model = menu.modelMenu();
+        List<ModelData.Model> models = ModelFilter.queryFilter(menu.modelMenu(), modelData);
+        models.forEach(System.out::println);
         // create logic for filtering list based on the query string
         // create a new filtered menu
-        String yearJson = connect(vehicle, brand, model);
-        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
-        yearData.forEach(System.out::println);
 
-        String year = menu.yearMenu();
-        String finalJson = connect(vehicle, brand, model, year);
-
-        CarData carData = new DataConverter().getData(finalJson, CarData.class);
-        System.out.println(carData);
+//        String yearJson = connect(vehicle, brand, model);
+//        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
+//        yearData.forEach(System.out::println);
+//
+//        String year = menu.yearMenu();
+//        String finalJson = connect(vehicle, brand, model, year);
+//
+//        CarData carData = new DataConverter().getData(finalJson, CarData.class);
+//        System.out.println(carData);
 
     }
 }
