@@ -31,7 +31,8 @@ public class Main {
 
         String vehicle = menu.vehicleMenu();
         String brandJson = connect(vehicle);
-        List<BrandData> brandData = Arrays.asList(converter.getData(brandJson, BrandData[].class));
+//        List<BrandData> brandData = Arrays.asList(converter.getData(brandJson, BrandData[].class));
+        List<BrandData> brandData = converter.getList(brandJson, BrandData.class);
         brandData.forEach(System.out::println);
 
         String brand = menu.brandMenu();
