@@ -40,14 +40,14 @@ public class Main {
         System.out.println(modelData);
 
         String modelQuery = menu.modelMenu(1);
-        List<ModelData.Data> models = ModelFilter.queryFilter(modelQuery, modelData);
+        List<Data> models = ModelFilter.queryFilter(modelQuery, modelData);
         models.forEach(System.out::println);
         String modelCode = menu.modelMenu(2);
 
         String yearJson = connect(vehicle, brand, modelCode);
-        List<YearData> yearData = Arrays.asList(converter.getData(yearJson, YearData[].class));
+        List<Data> yearData = converter.getList(yearJson, Data.class);
         List<CarData> carsData = new ArrayList<>();
-        for (YearData yearDataIt: yearData) {
+        for (Data yearDataIt: yearData) {
             String yearCode = yearDataIt.code();
             String carJson = connect(vehicle, brand, modelCode, yearCode);
             CarData carData = converter.getData(carJson, CarData.class);
