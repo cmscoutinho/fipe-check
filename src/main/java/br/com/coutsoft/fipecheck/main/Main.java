@@ -36,7 +36,6 @@ public class Main {
         String modelJson = connect(vehicle, brand);
         ModelData modelData = converter.getData(modelJson, ModelData.class);
         modelData.models().forEach(System.out::println);
-//        System.out.println(modelData);
 
         String modelQuery = menu.modelMenu(1);
         List<Data> models = ModelFilter.queryFilter(modelQuery, modelData);
@@ -45,6 +44,7 @@ public class Main {
 
         String yearJson = connect(vehicle, brand, modelCode);
         List<Data> yearData = converter.getList(yearJson, Data.class);
+
         List<CarData> carsData = new ArrayList<>();
         for (Data yearDataIt: yearData) {
             String yearCode = yearDataIt.code();

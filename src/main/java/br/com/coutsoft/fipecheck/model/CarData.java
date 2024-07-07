@@ -7,7 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public record CarData(@JsonAlias("Valor") String price,
                       @JsonAlias("Marca") String brand,
                       @JsonAlias("Modelo") String model,
-                      @JsonAlias("AnoModelo") int year) {
+                      @JsonAlias("AnoModelo") Integer year,
+                      @JsonAlias("Combustivel") String fuelType) {
 
     @Override
     public String toString() {
