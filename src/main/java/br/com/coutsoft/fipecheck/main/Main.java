@@ -17,6 +17,8 @@ import java.util.List;
 
 public class Main {
 
+    private DataConverter converter = new DataConverter();
+
     public String connect(String... args) {
         String fullURL = URLBuilder.getFullURL(args);
 
@@ -29,12 +31,12 @@ public class Main {
 
         String vehicle = menu.vehicleMenu();
         String brandJson = connect(vehicle);
-        List<BrandData> brandData = Arrays.asList(new DataConverter().getData(brandJson, BrandData[].class));
+        List<BrandData> brandData = Arrays.asList(converter.getData(brandJson, BrandData[].class));
         brandData.forEach(System.out::println);
 
         String brand = menu.brandMenu();
         String modelJson = connect(vehicle, brand);
-        ModelData modelData = new DataConverter().getData(modelJson, ModelData.class);
+        ModelData modelData = converter.getData(modelJson, ModelData.class);
         System.out.println(modelData);
 
         String modelQuery = menu.modelMenu(1);
@@ -43,12 +45,12 @@ public class Main {
         String modelCode = menu.modelMenu(2);
 
         String yearJson = connect(vehicle, brand, modelCode);
-        List<YearData> yearData = Arrays.asList(new DataConverter().getData(yearJson, YearData[].class));
+        List<YearData> yearData = Arrays.asList(converter.getData(yearJson, YearData[].class));
         List<CarData> carsData = new ArrayList<>();
         for (YearData yearDataIt: yearData) {
             String yearCode = yearDataIt.code();
             String carJson = connect(vehicle, brand, modelCode, yearCode);
-            CarData carData = new DataConverter().getData(carJson, CarData.class);
+            CarData carData = converter.getData(carJson, CarData.class);
             carsData.add(carData);
         }
 
